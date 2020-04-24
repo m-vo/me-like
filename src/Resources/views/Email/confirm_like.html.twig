@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<body>
+<h1>Thank you for your vote!</h1>
+{% if like.confirmed %}
+    <p>Your vote has already been counted. To see the result in your browser, please use the following link:</p>
+    <a href="{{ url|raw }}">{{ url|raw }}</a>
+{% else %}
+    <p>To confirm your vote, please open the following link in your browser:</p>
+    <a href="{{ url|raw }}">{{ url|raw }}</a><br>
+    <i>Note: Votes cannot be undone once confirmed.</i>
+{% endif %}
+<hr>
+<footer>
+    Your personal voting id: {{ like.userToken }} | Recorded at: {{ like.requestedAt|date('m/d/Y h:i') }}
+</footer>
+</body>
+</html>

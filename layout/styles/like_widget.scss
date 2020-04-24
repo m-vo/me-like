@@ -1,0 +1,108 @@
+@import "mixins";
+
+.me-like {
+  @include me-like_display-containers-by-status();
+  @include me-like_display-spinner-while-loading();
+
+  $soft: #dadada;
+  $light-gray: #cccccc;
+  $dark-gray: #5f5f5f;
+  $alert: #caacac;
+  $success: #84d231;
+
+  display: inline-flex;
+  align-items: center;
+  min-height: 4em;
+
+  .error-message {
+    padding: 1em;
+    margin-left: .5em;
+    font-size: 1rem;
+    background-color: $alert;
+  }
+
+  *[data-like-counter] {
+    display: inline-block;
+    line-height: 0;
+    background-color: $soft;
+    color: $dark-gray;
+    font-size: 1.5em;
+
+    span {
+      display: inline-block;
+      padding-top: 50%;
+      padding-bottom: 50%;
+      margin-left: .5em;
+      margin-right: .5em;
+    }
+  }
+
+  *[data-like-status] {
+    display: flex;
+    align-items: center;
+    margin-left: .5em;
+
+    > * {
+      display: none;
+      align-items: center;
+    }
+
+    .glyph {
+      font-size: 2em;
+      font-family: monospace;
+      font-style: normal;
+      color: $light-gray;
+      margin-top: -5px;
+    }
+
+    .info {
+      font-size: .9em;
+      margin-left: .35em;
+      color: $dark-gray;
+    }
+
+    &.status--confirmed .confirmed .glyph {
+      color: $success;
+    }
+  }
+
+  &.hide-form {
+    cursor: pointer;
+  }
+
+  *[data-like-form] {
+    display: flex;
+    flex-direction: row-reverse;
+    box-shadow: rgba(0, 0, 0, .1) 1px 1px 10px;
+    padding: .75em 1em;
+    margin-left: .75em;
+
+    p {
+      margin-left: 1em;
+      padding: 0;
+      font-size: .9em;
+      max-width: 24em;
+      color: #999999;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+
+      label span {
+        visibility: hidden;
+        display: block;
+        font-size: 0;
+      }
+
+      input {
+        padding: 0 .5em;
+      }
+
+      button {
+        margin-left: .5em;
+        min-width: 2.5em;
+      }
+    }
+  }
+}

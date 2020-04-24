@@ -1,0 +1,60 @@
+services:
+  mvo.me_like.endpoint_registry:
+    class: Mvo\MeLike\Endpoint\EndpointRegistry
+    arguments:
+      - !tagged_iterator 'mvo_me_like.endpoint'
+
+  mvo.me_like.repository.like:
+    class: Mvo\MeLike\Repository\LikeRepository
+    arguments:
+      - '@doctrine'
+    tags:
+      - { name: 'doctrine.repository_service' }
+
+  mvo.me_like.token.token_factory:
+    class: Mvo\MeLike\Token\TokenFactory
+
+  mvo.me_like.token.email_hash_provider:
+    class: Mvo\MeLike\Token\EmailHashProvider
+    arguments:
+      - '%kernel.secret%'
+
+  mvo.me_like.url.confirm_url_generator:
+    class: Mvo\MeLike\Url\ConfirmUrlGenerator
+    arguments:
+      - '@request_stack'
+      - '%mvo_me_like.user_token%'
+      - '%mvo_me_like.confirm_token%'
+
+  mvo.me_like.notification.email:
+    class: Mvo\MeLike\Notification\EmailNotification
+    arguments:
+      - '@mailer.mailer'
+      - '@mvo.me_like.endpoint_registry'
+      - '@translator'
+      - '%mvo_me_like.notification.email_from%'
+
+  mvo.me_like.manager:
+    class: Mvo\MeLike\LikeManager
+    arguments:
+      - '@mvo.me_like.endpoint_registry'
+      - '@mvo.me_like.repository.like'
+      - '@mvo.me_like.token.email_hash_provider'
+      - '@mvo.me_like.token.token_factory'
+      - '@mvo.me_like.notification.email'
+      - '@mvo.me_like.url.confirm_url_generator'
+      - '@router'
+      - '@validator'
+      - '@doctrine.orm.entity_manager'
+
+  Mvo\MeLike\Controller\LikeApiController:
+    public: true
+    arguments:
+      - '@mvo.me_like.manager'
+
+  mvo.me_like.widget:
+    class: 'Mvo\MeLike\Controller\LikeWidgetController'
+    public: true
+    arguments:
+      - '%mvo_me_like.user_token%'
+      - '%mvo_me_like.confirm_token%'

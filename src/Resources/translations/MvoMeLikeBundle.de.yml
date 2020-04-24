@@ -1,0 +1,16 @@
+widget:
+  counter: 'Stimmen'
+  call_to_action:
+    no-information: 'Jetzt abstimmen!'
+    unconfirmed: 'Wir haben Ihnen einen Link zur Bestätigung Ihrer Stimme geschickt.'
+    confirmed: 'Ihre Stimme wurde gezählt.'
+  note: |
+    Bitte geben Sie Ihre Email-Adresse ein, wir senden Ihnen einen Link zum Bestätigen Ihrer Stimme.
+  error: |
+    Ups, etwas ist schiefgelaufen. Bitte laden Sie die Seite neu und versuchen Sie es erneut.
+  label:
+    input: 'Email'
+    submit: '▲'
+
+email:
+  subject: 'Bestätigen Sie Ihre Stimme'

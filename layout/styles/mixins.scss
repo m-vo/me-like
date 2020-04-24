@@ -1,0 +1,63 @@
+@mixin me-like_display-containers-by-status() {
+  &.error {
+    .error-message {
+      display: block !important;
+    }
+  }
+
+  .error-message {
+    display: none;
+  }
+
+  &.locked,
+  &.hide-form {
+    *[data-like-form] {
+      display: none;
+    }
+  }
+
+  *[data-like-status] {
+    @each $status in 'no-information', 'unconfirmed', 'confirmed' {
+      &.status--#{$status} .#{$status} {
+        display: flex;
+      }
+    }
+  }
+}
+
+@mixin me-like_spinner($color: #999999, $size: 1em, $ring: .15em) {
+  position: relative;
+
+  &:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    border: $ring solid;
+    border-color: $color transparent $color transparent;
+    animation: rotate 1.5s linear infinite;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+@mixin me-like_display-spinner-while-loading() {
+  &.loading {
+    @include me-like_spinner();
+
+    * {
+      visibility: hidden;
+    }
+  }
+}

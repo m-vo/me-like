@@ -1,0 +1,3 @@
+mvo_like:
+  resource: '../../Controller/'
+  type: annotation

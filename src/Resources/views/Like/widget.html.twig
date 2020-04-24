@@ -1,0 +1,27 @@
+{% trans_default_domain 'MvoMeLikeBundle' %}
+
+<div class="me-like loading hide-form"
+     data-like="{{ path('mvo_like_data', { endpoint: endpoint }) }}"
+     data-like-confirm="{{ path('mvo_like_confirm') }}"
+     data-token-key-user="{{ token_key.user }}"
+     data-token-key-confirm="{{ token_key.confirm }}"
+>
+    <div data-like-counter aria-label="{{ 'widget.counter'|trans }}"></div>
+    <div data-like-status>
+        <div class="no-information" title="{{ 'widget.call_to_action.no-information'|trans }}"><i class="glyph">△</i></div>
+        <div class="unconfirmed" title="{{ 'widget.call_to_action.unconfirmed'|trans }}">
+            <i class="glyph">▲</i><span class="info">({{ 'widget.call_to_action.unconfirmed'|trans }})</span>
+        </div>
+        <div class="confirmed" title="{{ 'widget.call_to_action.confirmed'|trans }}"><i class="glyph">▲</i></div>
+    </div>
+    <form data-like-form>
+        <p>{{ 'widget.note'|trans }}</p>
+        <div class="row">
+            <label><input name="email" type="email" maxlength="254" placeholder="{{ 'widget.label.input'|trans }}"
+                          required><span>{{ 'widget.label.input'|trans }}</span></label>
+            <button type="submit">{{ 'widget.label.submit'|trans }}</button>
+        </div>
+    </form>
+
+    <div class="error-message">{{ 'widget.error'|trans }}</div>
+</div>

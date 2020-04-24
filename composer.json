@@ -1,0 +1,60 @@
+{
+  "name": "mvo/me-like",
+  "type": "symfony-bundle",
+  "description": "Let users like things, confirm their likes via email and keep track of the count.",
+  "keywords": [
+    "like",
+    "vote",
+    "email",
+    "confirm"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Moritz Vondano",
+      "homepage": "https://github.com/m-vo/me-like"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "doctrine/doctrine-bundle": "^1.8 || ^2.0",
+    "doctrine/orm": "^2.7",
+    "sensio/framework-extra-bundle": "^4.4 || ^5.0",
+    "symfony/doctrine-bridge": "^4.4 || ^5.0",
+    "symfony/framework-bundle": "^4.4 || ^5.0",
+    "symfony/mailer": "^4.4 || ^5.0",
+    "symfony/twig-bundle": "^4.4 || ^5.0",
+    "symfony/validator": "^4.4 || ^5.0"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^2.16",
+    "phpstan/phpstan": "^0.11.8",
+    "phpunit/phpunit": "^8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Mvo\\MeLike\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Mvo\\MeLike\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "cs": [
+      "vendor/bin/php-cs-fixer fix -v --ansi"
+    ],
+    "phpstan": [
+      "vendor/bin/phpstan analyse src tests --level=7 --ansi"
+    ],
+    "phpunit": [
+      "vendor/bin/phpunit"
+    ],
+    "chain": [
+      "@cs",
+      "@phpstan",
+      "@phpunit"
+    ]
+  }
+}

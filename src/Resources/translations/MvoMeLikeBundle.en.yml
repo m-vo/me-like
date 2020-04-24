@@ -1,0 +1,16 @@
+widget:
+  counter: 'Votes'
+  call_to_action:
+    no-information: 'Vote now!'
+    unconfirmed: 'Please confirm your vote by clicking the link we sent you.'
+    confirmed: 'Your vote has been cast.'
+  note: |
+    Please enter your email - we will send you a link to confirm your vote.
+  error: |
+    Oops, something went wrong. Please reload the page and try again.
+  label:
+    input: 'Email'
+    submit: '▲'
+
+email:
+  subject: 'Confirm your vote'
