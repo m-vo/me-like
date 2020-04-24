@@ -67,11 +67,6 @@ export default class LikeWidget {
 
             this.updateUI(statusData);
 
-            if (statusData.isLocked()) {
-                this._container.classList.add('--locked');
-                return;
-            }
-
             this.handleForm(statusData.pathAdd, () => {
                 statusData.fakeUnconfirmed();
                 this.updateUI(statusData);
