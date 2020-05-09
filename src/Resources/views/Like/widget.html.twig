@@ -8,19 +8,31 @@
 >
     <div data-like-counter aria-label="{{ 'widget.counter'|trans }}"></div>
     <div data-like-status>
-        <div class="no-information" title="{{ 'widget.call_to_action.no-information'|trans }}"><i class="glyph">△</i></div>
-        <div class="unconfirmed" title="{{ 'widget.call_to_action.unconfirmed'|trans }}">
-            <i class="glyph">▲</i><span class="info">({{ 'widget.call_to_action.unconfirmed'|trans }})</span>
+        <div class="no-information" title="{{ 'widget.call_to_action.no-information'|trans }}">
+            {% block like_status_no_information %}
+                <i class="glyph">△</i>
+            {% endblock %}
         </div>
-        <div class="confirmed" title="{{ 'widget.call_to_action.confirmed'|trans }}"><i class="glyph">▲</i></div>
+        <div class="unconfirmed" title="{{ 'widget.call_to_action.unconfirmed'|trans }}">
+            {% block like_status_unconfirmed %}
+                <i class="glyph">▲</i><span class="info">({{ 'widget.call_to_action.unconfirmed'|trans }})</span>
+            {% endblock %}
+        </div>
+        <div class="confirmed" title="{{ 'widget.call_to_action.confirmed'|trans }}">
+            {% block like_status_confirmed %}
+                <i class="glyph">▲</i>
+            {% endblock %}
+        </div>
     </div>
     <form data-like-form>
-        <p>{{ 'widget.note'|trans }}</p>
-        <div class="row">
-            <label><input name="email" type="email" maxlength="254" placeholder="{{ 'widget.label.input'|trans }}"
-                          required><span>{{ 'widget.label.input'|trans }}</span></label>
-            <button type="submit">{{ 'widget.label.submit'|trans }}</button>
-        </div>
+        {% block form %}
+            <p>{{ 'widget.note'|trans }}</p>
+            <div class="row">
+                <label><input name="email" type="email" maxlength="254" placeholder="{{ 'widget.label.input'|trans }}"
+                              required><span>{{ 'widget.label.input'|trans }}</span></label>
+                <button type="submit">{{ 'widget.label.submit'|trans }}</button>
+            </div>
+        {% endblock %}
     </form>
 
     <div class="error-message">{{ 'widget.error'|trans }}</div>

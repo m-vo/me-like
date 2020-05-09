@@ -118,6 +118,7 @@ export default class LikeWidget {
 
         if (statusData.isLocked()) {
             this._container.classList.add('locked');
+            this._container.classList.remove('hide-form');
         }
 
         const setStatusClasses = (target: HTMLElement) => {
