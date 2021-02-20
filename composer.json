@@ -19,7 +19,6 @@
     "php": ">=7.4",
     "doctrine/doctrine-bundle": "^1.8 || ^2.0",
     "doctrine/orm": "^2.7",
-    "sensio/framework-extra-bundle": "^4.4 || ^5.0",
     "symfony/doctrine-bridge": "^4.4 || ^5.0",
     "symfony/framework-bundle": "^4.4 || ^5.0",
     "symfony/mailer": "^4.4 || ^5.0",
