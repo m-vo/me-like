@@ -1,0 +1,19 @@
+@import "mixins";
+
+.me-like {
+  @include me-like_display-containers-by-status();
+  @include me-like_display-spinner-while-loading();
+
+  *[data-like-status] {
+    display: flex;
+
+    > * {
+      display: none;
+      align-items: center;
+    }
+  }
+
+  &.hide-form {
+    cursor: pointer;
+  }
+}

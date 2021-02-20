@@ -1,0 +1,49 @@
+.me-like.error .error-message {
+  display: block !important; }
+
+.me-like .error-message {
+  display: none; }
+
+.me-like.locked *[data-like-form], .me-like.hide-form *[data-like-form] {
+  display: none; }
+
+.me-like *[data-like-status].status--no-information .no-information {
+  display: flex; }
+
+.me-like *[data-like-status].status--unconfirmed .unconfirmed {
+  display: flex; }
+
+.me-like *[data-like-status].status--confirmed .confirmed {
+  display: flex; }
+
+.me-like.loading {
+  position: relative; }
+  .me-like.loading:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    border: 0.15em solid;
+    border-color: #999999 transparent #999999 transparent;
+    animation: rotate 1.5s linear infinite; }
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+  .me-like.loading * {
+    visibility: hidden; }
+
+.me-like *[data-like-status] {
+  display: flex; }
+  .me-like *[data-like-status] > * {
+    display: none;
+    align-items: center; }
+
+.me-like.hide-form {
+  cursor: pointer; }
