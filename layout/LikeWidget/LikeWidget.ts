@@ -136,23 +136,25 @@ export default class LikeWidget {
 
     private handleForm(pathAdd: string, onSuccess: () => void): void {
         // show hidden form
-        if (this._container.classList.contains('hide-form')) {
-            this._container.addEventListener('click', () => {
-                this._container.classList.remove('hide-form');
-                this._container.classList.add('show-form');
+        this._container.addEventListener('click', () => {
+            if (!this._container.classList.contains('hide-form')) {
+                return false;
+            }
 
-                const inputField = this._formElement.querySelector<HTMLInputElement>('input');
-                if (null !== inputField) {
-                    if(null !== LikeWidget.emailAddress) {
-                        inputField.value = LikeWidget.emailAddress;
-                    }
+            this._container.classList.remove('hide-form');
+            this._container.classList.add('show-form');
 
-                    inputField.focus();
+            const inputField = this._formElement.querySelector<HTMLInputElement>('input');
+            if (null !== inputField) {
+                if (null !== LikeWidget.emailAddress) {
+                    inputField.value = LikeWidget.emailAddress;
                 }
 
-                return false;
-            }, { once: true });
-        }
+                inputField.focus();
+            }
+
+            return false;
+        });
 
         // handle submit
         this._formElement.addEventListener('submit', (e) => {
