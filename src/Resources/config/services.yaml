@@ -51,6 +51,8 @@ services:
     public: true
     arguments:
       - '@mvo.me_like.manager'
+    calls:
+      - [setContainer, ['@service_container']]
 
   mvo.me_like.widget:
     class: 'Mvo\MeLike\Controller\LikeWidgetController'
@@ -58,3 +60,5 @@ services:
     arguments:
       - '%mvo_me_like.user_token%'
       - '%mvo_me_like.confirm_token%'
+    calls:
+      - [setContainer, ['@service_container']]
